@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:actworthy_citizen/ui/screens/login_screen.dart';
 import 'package:actworthy_citizen/ui/screens/act_screen.dart';
+import 'package:actworthy_citizen/ui/screens/inspire_screen.dart';
+import 'package:actworthy_citizen/ui/screens/settings_screen.dart';
 import 'package:actworthy_citizen/reducers/app_reducer.dart';
 import 'package:actworthy_citizen/models/action.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -40,6 +42,8 @@ class App extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         '/act': (BuildContext context) => ActScreen(),
         '/login': (BuildContext context) => LoginScreen(),
+        '/inspire': (BuildContext context) => InspireScreen(),
+        '/settings': (BuildContext context) => SettingsScreen(),
       },
     );
   }
