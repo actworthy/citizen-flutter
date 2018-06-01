@@ -4,10 +4,15 @@ description: Flutter mobile app for Citizen users of ActWorthy
 dependencies:
   flutter:
     sdk: flutter
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.0
+  # Redux with flutter!
+  redux: ^3.0.0
+  flutter_redux: ^0.5.0
+  # This package can persist redux state across restarts
+  redux_persist: ^0.7.0-rc.2
+
 
 dev_dependencies:
   flutter_test:
