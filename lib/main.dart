@@ -1,30 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:actworthy_citizen/ui/screens/login_screen.dart';
+import 'package:actworthy_citizen/ui/screens/act_screen.dart';
 
-void main() => runApp(new MyApp());
+void main() {
+  runApp(App());
+}
 
-class MyApp extends StatelessWidget {
+class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: 'Actworthy',
-      theme: new ThemeData(
-        primarySwatch: Colors.yellow,
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'ActWorthy',
+      theme: ThemeData(
+        primarySwatch: Colors.purple,
       ),
-      home: new Scaffold(
-        appBar: new AppBar(
-          title: new Text('Actworthy'),
-        ),
-        body: new Center(
-          child: new Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              new Text(
-                'ActWorthy! :D',
-              ),
-            ],
-          ),
-        ),
-      ),
+      home: ActScreen(),
+      routes: <String, WidgetBuilder>{
+        '/act': (BuildContext context) => ActScreen(),
+        '/login': (BuildContext context) => LoginScreen(),
+      },
     );
   }
 }
