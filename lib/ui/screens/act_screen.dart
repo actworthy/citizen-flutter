@@ -22,13 +22,24 @@ class ActionCardList extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(0.0, 8.0, 0.0, 0.0),
         child: ListView.builder(
           itemCount: 10,
-          itemBuilder: buildActionCard,
+          itemBuilder: _buildActionCard,
         ),
       ),
     );
   }
 
-  Widget buildActionCard(BuildContext context, int index1) {
+  // NOTE: When api is implemented, this is an example of how to use the store
+  // connector widget. First generic is what the state's type, second is the type
+  // is output to the builder
+
+  // Widget buildCard(BuildContext context, int index) {
+  //   return StoreConnector<List<Action>, Action>(
+  //     converter: (store) => store.state[index],
+  //     builder: (context, action) => Text(action.name),
+  //   );
+  // }
+
+  Widget _buildActionCard(BuildContext context, int index) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 2.0),
       child: Card(
