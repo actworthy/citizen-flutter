@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-// TODO: document this AppNav class
-class AWNavigationBar extends StatelessWidget {
+// TODO: document this class
+class NavigationBarPartial extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(

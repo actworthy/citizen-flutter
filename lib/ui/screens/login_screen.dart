@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:actworthy_citizen/ui/partials/aw_navigation_bar.dart';
-import '../partials/aw_app_bar.dart';
+import 'package:actworthy_citizen/ui/partials/navigation_bar_partial.dart';
+import 'package:actworthy_citizen/ui/partials/app_bar_partial.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -8,7 +8,7 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       appBar: buildAppBar(context),
       body: LoginForm(),
-      bottomNavigationBar: AWNavigationBar(),
+      bottomNavigationBar: NavigationBarPartial(),
     );
   }
 }
