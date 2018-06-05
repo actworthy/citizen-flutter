@@ -8,5 +8,5 @@ We don't have crazy contributing guidelines (yet). For now, follow this process:
 3. Write the code! Try to follow the [Flutter style guidelines](https://github.com/flutter/flutter/wiki/Style-guide-for-Flutter-repo), the [Dart guidelines](https://www.dartlang.org/guides/language/effective-dart/style), and the general style of the repo itself. A contributor may request changes if the style is too inconsistent from these guidelines.
 4. Create a pull request with the fix/feature! Mention the issue in the pull request. 
 5. A contributor will review the pull request. They may request some changes, or may simply accept the PR. 
-6. Once your PR is accepted, you will be added to the AUTHORS file for your awesome hard work!
+6. Once your PR is accepted, you will be added to the AUTHORS file for your awesome, hard work!
 7. Thank you!
