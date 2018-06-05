@@ -1,19 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:actworthy_citizen/ui/partials/navigation_bar_partial.dart';
-import 'package:actworthy_citizen/ui/partials/app_bar_partial.dart';
 
-class ActScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: buildAppBar(context),
-      body: ActionCardList(),
-      bottomNavigationBar: NavigationBarPartial(),
-    );
-  }
-}
-
-class ActionCardList extends StatelessWidget {
+/// Act screen. Creates a list of [Card] representing actions a user will be able
+/// to filter in the future. Accesses the Redux store to list the actions.
+class ActView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -39,6 +28,7 @@ class ActionCardList extends StatelessWidget {
   //   );
   // }
 
+  /// Displays an action's data and builds a call to action using [_buildCallToAction]
   Widget _buildActionCard(BuildContext context, int index) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 2.0),
@@ -105,6 +95,8 @@ class ActionCardList extends StatelessWidget {
     );
   }
 
+  /// When the action's type is something like 'email' or 'call', the Take Action
+  /// button with open the proper app. Uses [IconButton] and [FlatButton]
   Widget _buildCallToAction() {
     return ButtonTheme.bar(
       child: ButtonBar(

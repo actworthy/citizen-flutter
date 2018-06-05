@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:actworthy_citizen/ui/screens/login_screen.dart';
-import 'package:actworthy_citizen/ui/screens/act_screen.dart';
-import 'package:actworthy_citizen/ui/screens/inspire_screen.dart';
-import 'package:actworthy_citizen/ui/screens/settings_screen.dart';
+import 'package:actworthy_citizen/ui/screens/home_screen.dart';
 import 'package:actworthy_citizen/reducers/app_reducer.dart';
 import 'package:actworthy_citizen/models/action.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -15,6 +13,8 @@ void main() {
   runApp(ActWorthyApp(store));
 }
 
+/// Wraps the [App] class with a [StoreProvidor] so that any child widget in the
+/// tree can access the redux store
 class ActWorthyApp extends StatelessWidget {
   final Store<List<Action>> store;
 
@@ -29,6 +29,8 @@ class ActWorthyApp extends StatelessWidget {
   }
 }
 
+/// Creates the [MaterialApp] with a title, theme, home of [HomeScreen] and
+/// the named routes for the [Navigator]
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -38,12 +40,10 @@ class App extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
       ),
-      home: ActScreen(),
+      home: HomeScreen(),
       routes: <String, WidgetBuilder>{
-        '/act': (BuildContext context) => ActScreen(),
+        '/home': (BuildContext context) => HomeScreen(),
         '/login': (BuildContext context) => LoginScreen(),
-        '/inspire': (BuildContext context) => InspireScreen(),
-        '/settings': (BuildContext context) => SettingsScreen(),
       },
     );
   }

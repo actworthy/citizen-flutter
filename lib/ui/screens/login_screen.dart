@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:actworthy_citizen/ui/partials/navigation_bar_partial.dart';
-import 'package:actworthy_citizen/ui/partials/app_bar_partial.dart';
 
+/// Displays login form and is instantiated from the [buildAppBar]
 class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(context),
+      appBar: AppBar(
+        backgroundColor: Colors.purple[700],
+        title: Text('Login'),
+      ),
       body: LoginForm(),
-      bottomNavigationBar: NavigationBarPartial(),
     );
   }
 }
 
-// Define a Custom Form Widget
 class LoginForm extends StatefulWidget {
   @override
   LoginFormState createState() {
@@ -21,9 +21,8 @@ class LoginForm extends StatefulWidget {
   }
 }
 
-// Define a corresponding State class. This class will hold the data related to
-// the form.
 // TODO: Document
+/// Placeholder inputs
 class LoginFormState extends State<LoginForm> {
   // Create a global key that will uniquely identify the Form widget and allow
   // us to validate the form
