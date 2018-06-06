@@ -29,8 +29,8 @@ class ActWorthyApp extends StatelessWidget {
   }
 }
 
-/// Creates the [MaterialApp] with a title, theme, home of [HomeScreen] and
-/// the named routes for the [Navigator]
+/// Creates a [MaterialApp] with a title, theme, home which is set to [HomeScreen],
+/// and named routes for the [Navigator] to use.
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

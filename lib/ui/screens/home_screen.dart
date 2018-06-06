@@ -3,13 +3,14 @@ import 'package:actworthy_citizen/ui/partials/app_bar_partial.dart';
 import 'package:actworthy_citizen/ui/partials/bottom_nav_bar_partial.dart';
 import 'package:actworthy_citizen/ui/views/act_view.dart';
 
-/// Creates the general [Scaffold] with an [AppBar] from the [buildAppBar]
-/// function and a [BottomNavBarPartial] that remain consistent across _most_
-/// screens. The body of the param of the scaffold defaults to [ActView], as
-/// that will be considered the home screen of the app.
+/// Creates the app's general [Scaffold] with an [AppBar] from the [buildAppBar]
+/// function and a [BottomNavigationBar] from the [BottomNavBarPartial] class.
+/// We create the AppBar and BottomNavBar here so that they will be the same in
+/// _most_ views. The `body` param of the scaffold defaults to [ActView], as it is
+/// considered to be the home view of the app.
 ///
-/// When the user navigates via the [BottomNavBarPartial], the [ActView] is
-/// swapped out with the [InspireView] and [SetttingsView] depending on where
+/// When the user navigates via the [BottomNavBarPartial], [ActView] is
+/// swapped out with [InspireView] and [SetttingsView] depending on where
 /// the user navigates to.
 ///
 /// Instantiated by [App]
