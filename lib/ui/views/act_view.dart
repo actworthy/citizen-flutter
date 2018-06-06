@@ -95,37 +95,46 @@ class ActView extends StatelessWidget {
     );
   }
 
+  /// Draws a call to action where the [FlattButton] labeled "Take Action" is aligned
+  /// to the end of the action [Card], and the [IconButton]s (save, share, and create
+  /// post) are aligned at the start of the card
+  ///
   /// When the action's type is something like 'email' or 'call', the Take Action
-  /// button with open the proper app. Uses [IconButton] and [FlatButton]
+  /// button with open the proper app.
+  ///
+  /// See also [_buildActionCard], [ActView]
   Widget _buildCallToAction() {
-    return ButtonTheme.bar(
-      child: ButtonBar(
-        children: <Widget>[
-          IconButton(
-            icon: Icon(Icons.bookmark_border),
-            color: Colors.grey,
-            tooltip: "Save action",
-            onPressed: () => debugPrint("Saved action"),
+    return Row(
+      children: <Widget>[
+        IconButton(
+          icon: Icon(Icons.bookmark_border),
+          color: Colors.grey,
+          tooltip: "Save action",
+          onPressed: () => {},
+        ),
+        IconButton(
+          icon: Icon(Icons.share),
+          color: Colors.grey,
+          tooltip: "Share action",
+          onPressed: () => {},
+        ),
+        IconButton(
+          icon: Icon(Icons.edit),
+          color: Colors.grey,
+          tooltip: "Create an inpsiring post about action",
+          onPressed: () => {},
+        ),
+        Expanded(
+          child: Container(
+            alignment: AlignmentDirectional.centerEnd,
+            child: FlatButton(
+              child: const Text("Take Action"),
+              textColor: Colors.deepPurple,
+              onPressed: () => {},
+            ),
           ),
-          IconButton(
-            icon: Icon(Icons.share),
-            color: Colors.grey,
-            tooltip: "Share action",
-            onPressed: () => {},
-          ),
-          IconButton(
-            icon: Icon(Icons.edit),
-            color: Colors.grey,
-            tooltip: "Create an inpsiring post about action",
-            onPressed: () => {},
-          ),
-          FlatButton(
-            child: const Text("Take Action"),
-            textColor: Colors.deepPurple,
-            onPressed: () => debugPrint("Took action"),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
