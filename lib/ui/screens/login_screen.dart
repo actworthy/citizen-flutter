@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:actworthy_citizen/ui/partials/form_text_field.dart';
 
 /// Displays login form and is instantiated from the [buildAppBar]
 class LoginScreen extends StatelessWidget {
@@ -40,27 +41,14 @@ class LoginFormState extends State<LoginForm> {
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: TextFormField(
-                // validator: validateEmail,
-                decoration: InputDecoration(
-                  labelText: "Email",
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(width: 0.5, color: Colors.teal),
-                  ),
-                ),
-              ),
+              child: buildTextFormField(labelText: "Email"),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: TextFormField(
+              child: buildTextFormField(
+                labelText: "Password",
                 obscureText: true,
-                // validator: () => ),
-                decoration: InputDecoration(
-                  labelText: "Password",
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(width: 0.5, color: Colors.teal),
-                  ),
-                ),
+                autocorrect: false,
               ),
             ),
             Row(

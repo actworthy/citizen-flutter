@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:actworthy_citizen/ui/partials/form_text_field.dart';
 
 class SignUpScreen extends StatelessWidget {
   @override
@@ -40,34 +41,24 @@ class SignUpFormState extends State<SignUpForm> {
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: TextFormField(
+              child: buildTextFormField(
+                context: context,
+                labelText: "Email",
                 validator: validateEmail,
-                decoration: InputDecoration(
-                  labelText: "Email",
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(width: 0.5, color: Colors.teal),
-                  ),
-                ),
-                onFieldSubmitted: (value) =>
-                    FocusScope.of(context).requestFocus(pwNode),
+                focusOnSubmit: pwNode,
               ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: TextFormField(
+              child: buildTextFormField(
                 key: _passwordFieldKey,
                 focusNode: pwNode,
                 autocorrect: false,
                 obscureText: true,
+                context: context,
+                labelText: "Password",
                 validator: validatePassword,
-                decoration: InputDecoration(
-                  labelText: "Password",
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(width: 0.5, color: Colors.teal),
-                  ),
-                ),
-                onFieldSubmitted: (value) =>
-                    FocusScope.of(context).requestFocus(confirmPWNode),
+                focusOnSubmit: confirmPWNode,
               ),
             ),
             Text(
@@ -79,10 +70,11 @@ class SignUpFormState extends State<SignUpForm> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: TextFormField(
-                autocorrect: false,
+              child: buildTextFormField(
                 focusNode: confirmPWNode,
+                autocorrect: false,
                 obscureText: true,
+                labelText: "Confirm Password",
                 validator: (confirmValue) {
                   final password = _passwordFieldKey.currentState.value;
 
@@ -90,12 +82,6 @@ class SignUpFormState extends State<SignUpForm> {
                       ? "Passwords must match"
                       : null;
                 },
-                decoration: InputDecoration(
-                  labelText: "Confirm Password",
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(width: 0.5, color: Colors.teal),
-                  ),
-                ),
               ),
             ),
             Row(
