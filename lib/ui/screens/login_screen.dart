@@ -7,7 +7,7 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.purple[700],
-        title: Text('Login'),
+        title: Text("Login"),
       ),
       body: LoginForm(),
     );
@@ -41,7 +41,7 @@ class LoginFormState extends State<LoginForm> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextFormField(
-                validator: (val) => val.isEmpty ? 'Please enter some text' : '',
+                // validator: validateEmail,
                 decoration: InputDecoration(
                   labelText: "Email",
                   border: OutlineInputBorder(
@@ -54,7 +54,7 @@ class LoginFormState extends State<LoginForm> {
               padding: const EdgeInsets.all(8.0),
               child: TextFormField(
                 obscureText: true,
-                validator: (val) => val.isEmpty ? 'Please enter some text' : '',
+                // validator: () => ),
                 decoration: InputDecoration(
                   labelText: "Password",
                   border: OutlineInputBorder(
@@ -63,10 +63,36 @@ class LoginFormState extends State<LoginForm> {
                 ),
               ),
             ),
-            MaterialButton(
-              padding: EdgeInsets.all(8.0),
-              onPressed: () => {},
-              child: Text("Submit"),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: RaisedButton(
+                      color: Colors.blue,
+                      onPressed: () =>
+                          Navigator.of(context).pushNamed("/signup"),
+                      child: Text("Sign up"),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: RaisedButton(
+                      color: Colors.green[800],
+                      onPressed: () {
+                        if (_formKey.currentState.validate()) {
+                          Scaffold.of(context).showSnackBar(new SnackBar(
+                              content: new Text('Processing Data')));
+                        }
+                      },
+                      child: Text("Login"),
+                    ),
+                  ),
+                ),
+              ],
             )
           ],
         ),
