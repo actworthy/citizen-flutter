@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:actworthy_citizen/ui/partials/form_text_field.dart';
+import 'package:actworthy_citizen/ui/partials/form_text_field_partial.dart';
 
 /// Displays login form and is instantiated from the [buildAppBar]
 class LoginScreen extends StatelessWidget {

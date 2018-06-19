@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:actworthy_citizen/ui/partials/form_text_field.dart';
+import 'package:actworthy_citizen/ui/partials/form_text_field_partial.dart';
 
 class SignUpScreen extends StatelessWidget {
   @override
@@ -27,8 +27,8 @@ class SignUpFormState extends State<SignUpForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final GlobalKey<FormFieldState<String>> _passwordFieldKey =
       GlobalKey<FormFieldState<String>>();
-  final FocusNode pwNode = FocusNode();
-  final FocusNode confirmPWNode = FocusNode();
+  final FocusNode _pwNode = FocusNode();
+  final FocusNode _confirmPWNode = FocusNode();
 
   @override
   Widget build(BuildContext context) {
@@ -45,20 +45,20 @@ class SignUpFormState extends State<SignUpForm> {
                 context: context,
                 labelText: "Email",
                 validator: validateEmail,
-                focusOnSubmit: pwNode,
+                focusOnSubmit: _pwNode,
               ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: buildTextFormField(
                 key: _passwordFieldKey,
-                focusNode: pwNode,
+                focusNode: _pwNode,
                 autocorrect: false,
                 obscureText: true,
                 context: context,
                 labelText: "Password",
                 validator: validatePassword,
-                focusOnSubmit: confirmPWNode,
+                focusOnSubmit: _confirmPWNode,
               ),
             ),
             Text(
@@ -71,7 +71,7 @@ class SignUpFormState extends State<SignUpForm> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: buildTextFormField(
-                focusNode: confirmPWNode,
+                focusNode: _confirmPWNode,
                 autocorrect: false,
                 obscureText: true,
                 labelText: "Confirm Password",
@@ -119,6 +119,14 @@ class SignUpFormState extends State<SignUpForm> {
         ),
       ),
     );
+  }
+
+  // Focos nodes must be disposed of
+  @override
+  void dispose() {
+    _pwNode.dispose();
+    _confirmPWNode.dispose();
+    super.dispose();
   }
 }
 
