@@ -1,35 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:actworthy_citizen/api.dart' as API;
+import 'package:http/http.dart';
+import 'package:actworthy_citizen/app_state.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:actworthy_citizen/models/action.dart';
 
 /// Act screen. Creates a list of [Card] representing actions a user will be able
 /// to filter in the future. Accesses the Redux store to list the actions.
 class ActView extends StatelessWidget {
+  ActView() {
+    API.fetchActions();
+    // .then(_parseResponse);
+  }
+
+  void _parseResponse(Response res) {
+    final response = res.body;
+
+    debugPrint("RESPONSE HERE!!!!!!!!!: $response");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.grey,
       child: new Padding(
         padding: const EdgeInsets.fromLTRB(0.0, 8.0, 0.0, 0.0),
-        child: ListView.builder(
-          itemCount: 10,
-          itemBuilder: _buildActionCard,
+        child: StoreConnector<AppState, int>(
+          converter: (store) => store.state.actions.length,
+          builder: (context, length) => ListView.builder(
+                itemCount: length,
+                itemBuilder: _buildCard,
+              ),
         ),
       ),
     );
   }
 
-  // NOTE: When api is implemented, this is an example of how to use the store
-  // connector widget. First generic is what the state's type, second is the type
-  // is output to the builder
-
-  // Widget buildCard(BuildContext context, int index) {
-  //   return StoreConnector<List<Action>, Action>(
-  //     converter: (store) => store.state[index],
-  //     builder: (context, action) => Text(action.name),
-  //   );
-  // }
+  Widget _buildCard(BuildContext context, int index) {
+    return StoreConnector<AppState, Action>(
+      converter: (store) => store.state.actions[index],
+      builder: (context, action) => _buildActionCard(context, action),
+    );
+  }
 
   /// Displays an action's data and builds a call to action using [_buildCallToAction]
-  Widget _buildActionCard(BuildContext context, int index) {
+  Widget _buildActionCard(BuildContext context, Action action) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 2.0),
       child: Card(
@@ -40,7 +55,7 @@ class ActView extends StatelessWidget {
               child: new Row(
                 children: <Widget>[
                   Text(
-                    "#A issue, #Issues galore",
+                    action.issues.map((issue) => "#${issue.name}").join(", "),
                     style: TextStyle(
                       color: Colors.blue[200],
                       fontSize: 12.0,
@@ -57,12 +72,12 @@ class ActView extends StatelessWidget {
                 ),
                 backgroundColor: Colors.yellow[400],
               ),
-              title: const Text("Large, Bold, Clear Title"),
+              title: Text(action.title),
               subtitle: Row(
                 children: <Widget>[
                   Column(
                     children: <Widget>[
-                      Text("Organization of Titles"),
+                      Text(action.orgName),
                     ],
                   ),
                   Expanded(
@@ -82,10 +97,7 @@ class ActView extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: ListTile(
-                subtitle: Text(
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dictum aliquet" +
-                        "ultricies. Vestibulum commodo suscipit lacinia. Donec suscipit vehicula" +
-                        " fermentum..."),
+                subtitle: Text(action.summary),
               ),
             ),
             _buildCallToAction(),

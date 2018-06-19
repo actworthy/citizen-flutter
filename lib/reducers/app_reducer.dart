@@ -1,12 +1,14 @@
 import 'package:actworthy_citizen/models/action.dart';
 import 'package:actworthy_citizen/redux-actions/add_action_items_redux_action.dart';
+import 'package:actworthy_citizen/app_state.dart';
 
 /// Aggregates all reducers
-List<Action> appReducers(List<Action> items, dynamic action) {
+AppState appReducers(AppState appState, dynamic action) {
   if (action is AddActionItemsReduxAction) {
-    return addActionItems(items, action);
+    /// Is setting it like this going to upset Redux?
+    appState.actions = addActionItems(appState.actions, action);
   }
-  return items;
+  return appState;
 }
 
 List<Action> addActionItems(
