@@ -5,6 +5,8 @@ import 'package:actworthy_citizen/ui/screens/sign_up_screen.dart';
 
 /// Creates a [MaterialApp] with a title, theme, home which is set to [HomeScreen],
 /// and named routes for the [Navigator] to use.
+///
+/// Instantiated by [ActWorthyApp]
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
