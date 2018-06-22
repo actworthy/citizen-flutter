@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 /// title of 'ActWorthy', and sets up the login [IconButton].
 AppBar buildAppBar(BuildContext context) {
   return AppBar(
-    backgroundColor: Colors.purple[700],
-    title: Text('ActWorthy'),
+    title: Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Image.asset('assets/actworthy-logo.png', fit: BoxFit.cover),
+    ),
     actions: <Widget>[
       IconButton(
         icon: Icon(Icons.person),

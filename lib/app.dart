@@ -14,7 +14,7 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'ActWorthy',
       theme: ThemeData(
-        primarySwatch: Colors.purple,
+        primaryColor: Colors.white,
       ),
       home: HomeScreen(),
       routes: <String, WidgetBuilder>{
