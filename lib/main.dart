@@ -4,9 +4,15 @@ import 'package:actworthy_citizen/reducers/app_reducer.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:actworthy_citizen/app_state.dart';
 import 'package:redux/redux.dart';
+import 'package:actworthy_citizen/middleware/app_middleware.dart';
+import 'package:actworthy_citizen/redux-actions/action_redux_actions.dart';
 
 void main() {
-  final store = Store<AppState>(appReducers, initialState: AppState());
+  final store = Store<AppState>(
+    appReducers,
+    initialState: AppState(),
+    middleware: [fetchActionsMiddleware],
+  );
   runApp(ActWorthyApp(store));
 }
 
@@ -15,7 +21,9 @@ void main() {
 class ActWorthyApp extends StatelessWidget {
   final Store<AppState> store;
 
-  ActWorthyApp(this.store);
+  ActWorthyApp(this.store) {
+    store.dispatch(FetchActionsReduxAction());
+  }
 
   @override
   Widget build(BuildContext context) {
