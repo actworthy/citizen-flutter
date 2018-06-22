@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:actworthy_citizen/ui/partials/form_text_field_partial.dart';
+import 'package:actworthy_citizen/ui/partials/app_bar_partial.dart';
 
 class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.purple[700],
-        title: Text("Signup"),
-      ),
+      appBar: buildAppBar(context, title: 'Signup'),
       body: SignUpForm(),
     );
   }

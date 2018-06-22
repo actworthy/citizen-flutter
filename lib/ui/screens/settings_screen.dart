@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:actworthy_citizen/ui/partials/labeled_checkbox_partial.dart';
 import 'package:actworthy_citizen/ui/partials/form_text_field_partial.dart';
+import 'package:actworthy_citizen/ui/partials/app_bar_partial.dart';
 
 // notification settings:
 //  - email
@@ -9,7 +10,15 @@ import 'package:actworthy_citizen/ui/partials/form_text_field_partial.dart';
 // Location
 // Change password (should add "forgot password" to login as well)
 
-/// Empty placeholder
+class SettingsScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: buildAppBar(context, title: 'Settings'),
+      body: SettingsView(),
+    );
+  }
+}
 
 class SettingsView extends StatelessWidget {
   @override
@@ -19,7 +28,6 @@ class SettingsView extends StatelessWidget {
         padding: const EdgeInsets.all(18.0),
         child: ListView(
           children: <Widget>[
-            Padding(padding: const EdgeInsets.symmetric(vertical: 10.0)),
             Text(
               "Notifications",
               style: TextStyle(
