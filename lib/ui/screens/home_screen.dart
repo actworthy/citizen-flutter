@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:actworthy_citizen/ui/partials/app_bar_partial.dart';
-import 'package:actworthy_citizen/ui/partials/bottom_nav_bar_partial.dart';
 import 'package:actworthy_citizen/ui/views/act_view.dart';
 
 /// Creates the app's general [Scaffold] with an [AppBar] from the [buildAppBar]
@@ -20,7 +19,6 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: buildAppBar(context),
       body: ActView(),
-      bottomNavigationBar: BottomNavBarPartial(),
     );
   }
 }
