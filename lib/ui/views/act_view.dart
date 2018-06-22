@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:actworthy_citizen/api.dart' as API;
-import 'package:http/http.dart';
 import 'package:actworthy_citizen/app_state.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:actworthy_citizen/models/action.dart';
@@ -8,17 +6,6 @@ import 'package:actworthy_citizen/models/action.dart';
 /// Act screen. Creates a list of [Card] representing actions a user will be able
 /// to filter in the future. Accesses the Redux store to list the actions.
 class ActView extends StatelessWidget {
-  ActView() {
-    API.fetchActions();
-    // .then(_parseResponse);
-  }
-
-  void _parseResponse(Response res) {
-    final response = res.body;
-
-    debugPrint("RESPONSE HERE!!!!!!!!!: $response");
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,10 +14,12 @@ class ActView extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(0.0, 8.0, 0.0, 0.0),
         child: StoreConnector<AppState, int>(
           converter: (store) => store.state.actions.length,
-          builder: (context, length) => ListView.builder(
-                itemCount: length,
-                itemBuilder: _buildCard,
-              ),
+          builder: (context, length) => (length > 0)
+              ? ListView.builder(
+                  itemCount: length,
+                  itemBuilder: _buildCard,
+                )
+              : Center(child: CircularProgressIndicator()),
         ),
       ),
     );
@@ -54,8 +43,9 @@ class ActView extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(8.0, 6.0, 8.0, 0.0),
               child: new Row(
                 children: <Widget>[
+                  // Issues
                   Text(
-                    action.issues.map((issue) => "#${issue.name}").join(", "),
+                    action.issues.map((issue) => "#$issue").join(", "),
                     style: TextStyle(
                       color: Colors.blue[200],
                       fontSize: 12.0,
@@ -77,7 +67,7 @@ class ActView extends StatelessWidget {
                 children: <Widget>[
                   Column(
                     children: <Widget>[
-                      Text(action.orgName),
+                      Text(action.organization.name),
                     ],
                   ),
                   Expanded(
