@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:actworthy_citizen/constants/material_design_icons.dart';
 
 /// Returns an [AppBar] to be used in the app's [HomeScreen], gives it a
 /// title of 'ActWorthy', and sets up the login [IconButton].
@@ -12,7 +13,10 @@ AppBar buildAppBar(BuildContext context, {String title}) {
           ),
     actions: <Widget>[
       IconButton(
-        icon: Icon(Icons.person),
+        icon: Icon(
+          ActWorthyIcons.person,
+          color: Colors.grey,
+        ),
         onPressed: () => Navigator.of(context).pushNamed('/login'),
       ),
     ],

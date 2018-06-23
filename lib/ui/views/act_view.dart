@@ -57,7 +57,7 @@ class ActView extends StatelessWidget {
             ListTile(
               leading: CircleAvatar(
                 child: Icon(
-                  Icons.card_giftcard,
+                  ActWorthyIcons.card_giftcard,
                   color: Colors.grey[800],
                 ),
                 backgroundColor: Colors.yellow[400],
@@ -75,7 +75,7 @@ class ActView extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: <Widget>[
                         Icon(
-                          Icons.group_add,
+                          ActWorthyIcons.group_add,
                           color: Colors.grey[600],
                         ),
                       ],
@@ -109,19 +109,19 @@ class ActView extends StatelessWidget {
     return Row(
       children: <Widget>[
         IconButton(
-          icon: Icon(Icons.bookmark_border),
+          icon: Icon(ActWorthyIcons.bookmark_border),
           color: Colors.grey,
           tooltip: "Save action",
           onPressed: () => {},
         ),
         IconButton(
-          icon: Icon(Icons.share),
+          icon: Icon(ActWorthyIcons.share),
           color: Colors.grey,
           tooltip: "Share action",
           onPressed: () => {},
         ),
         IconButton(
-          icon: Icon(Icons.edit),
+          icon: Icon(ActWorthyIcons.edit),
           color: Colors.grey,
           tooltip: "Create an inpsiring post about action",
           onPressed: () => {},
