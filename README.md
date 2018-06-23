@@ -30,6 +30,9 @@ This is a cross platform app built with Google's [Flutter](https://flutter.io/) 
 
 ## Resources
 
+- **UI Mockups**
+    - These can be found in the [UI Design milestone](https://gitlab.com/actworthy/citizen-flutter/milestones/1)
+
 - **Flutter**:
     - [documentation](https://flutter.io/docs/)
 
