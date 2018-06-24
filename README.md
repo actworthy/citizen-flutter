@@ -1,4 +1,4 @@
-# ActWorthy
+# ActWorthy [![button]](https://cdn-images-1.medium.com/max/1100/1*T-zNS0uBQNI4tzDF4-i6OQ.png)(https://join.slack.com/t/actworthycontributors/shared_invite/enQtMzg3OTAwMDI0NTY3LWEzYjFkZWNmNThmZTc0NWM0NDFmODQ4NDNkNzRhMTMzN2I4YTUyMjg3MDY1MTY3OTJhZGQ4NjViMWNhZTQzODI)
 This is the ActWorthy app for citizen users (anyone who is not an organization or activist). 
 
 ## What is ActWorthy?
@@ -31,7 +31,7 @@ This is a cross platform app built with Google's [Flutter](https://flutter.io/) 
 ## Resources
 
 - **UI Mockups**
-    - These can be found in the [UI Design milestone](https://gitlab.com/actworthy/citizen-flutter/milestones/1)
+    - These can be found in the [UI Design milestone](https://github.com/actworthy/citizen-flutter/mobile-design.pdf)
 
 - **Flutter**:
     - [documentation](https://flutter.io/docs/)
