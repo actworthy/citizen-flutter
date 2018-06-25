@@ -45,7 +45,7 @@ class ActView extends StatelessWidget {
                 children: <Widget>[
                   // Issues
                   Text(
-                    action.issues.map((issue) => "#$issue").join(", "),
+                    action.issues.map((issue) => "#${issue.name}").join(", "),
                     style: TextStyle(
                       color: Colors.blue[200],
                       fontSize: 12.0,
