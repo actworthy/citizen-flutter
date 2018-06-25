@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 
+// TODO: document
 class Organization {
   final String name;
   final String type;

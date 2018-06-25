@@ -1,7 +1,6 @@
 # ActWorthy
 This is the ActWorthy app for citizen users (anyone who is not an organization or activist). 
 
-#### Feel free to join the contributors [Slack](https://join.slack.com/t/actworthycontributors/shared_invite/enQtMzg3OTAwMDI0NTY3LWEzYjFkZWNmNThmZTc0NWM0NDFmODQ4NDNkNzRhMTMzN2I4YTUyMjg3MDY1MTY3OTJhZGQ4NjViMWNhZTQzODI) channel!
 
 ## What is ActWorthy?
 Our mission is to help people deepen their relationship with their community through action. ActWorthy is social media for social change. We are creating the platform that makes people feel compelled to take action in their community. "Action" might include donating, volunteering, or any community-oriented action you can think of. At its core, ActWorthy is a feed of actions you can take to impact the issues you care about in the community you live in.
@@ -25,6 +24,8 @@ The current media ecosystem is designed for collective consumption, not collecti
 ActWorthy is about building community. We believe the best way to build community is through a community of developers who want to help people make change. As developers, we know that code is our preferred way of contributing. ActWorthy is a great way to work together to **make change through code**.
 
 
+#### If you're interested in contributing, feel free to join the contributors [Slack](https://join.slack.com/t/actworthycontributors/shared_invite/enQtMzg3OTAwMDI0NTY3LWEzYjFkZWNmNThmZTc0NWM0NDFmODQ4NDNkNzRhMTMzN2I4YTUyMjg3MDY1MTY3OTJhZGQ4NjViMWNhZTQzODI) channel!
+
 ## Tech stack
 **Flutter (Dart 2) and Redux**
 
@@ -46,9 +47,9 @@ If there are better names and structures, feel free to mention them in an issue,
     - `reducers` - Redux Reducers. These take in changes to the state and produce a new app state from those changes
     - `redux-actions` - The Redux Actions that Reducers use to determine how to alter state
     - `ui` - User Interface classes
-        - `partials` - Smaller than screens and views, these are reusable components. Ex: stylized `AppBar` or special checkboxes
+        - `partials` - maller than screens and views, these widgets are reusable components. Ex: stylized `AppBar` or special checkboxes
         - `screens` - Widgets that take up the entire phone viewport from top to bottom. Usually a `Scaffold` at top level
-        - `views` - Views that take up _most_ of a screen. Typically inside of the `body` parameter of a `Scaffold`
+        - `views` - Widgets that take up _most_ of a screen. Typically inside of the `body` parameter of a `Scaffold`
 - `test` - Tests in here.
 
 
