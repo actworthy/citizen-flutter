@@ -24,7 +24,7 @@ The current media ecosystem is designed for collective consumption, not collecti
 ActWorthy is about building community. We believe the best way to build community is through a community of developers who want to help people make change. As developers, we know that code is our preferred way of contributing. ActWorthy is a great way to work together to **make change through code**.
 
 
-#### If you're interested in contributing, feel free to join the contributors [Slack](https://join.slack.com/t/actworthycontributors/shared_invite/enQtMzg3OTAwMDI0NTY3LWEzYjFkZWNmNThmZTc0NWM0NDFmODQ4NDNkNzRhMTMzN2I4YTUyMjg3MDY1MTY3OTJhZGQ4NjViMWNhZTQzODI) channel!
+#### If you're interested in contributing, check out the [getting started guide](https://github.com/actworthy/citizen-flutter/blob/master/CONTRIBUTING.md) and feel free to join the contributors [Slack](https://join.slack.com/t/actworthycontributors/shared_invite/enQtMzg3OTAwMDI0NTY3LWEzYjFkZWNmNThmZTc0NWM0NDFmODQ4NDNkNzRhMTMzN2I4YTUyMjg3MDY1MTY3OTJhZGQ4NjViMWNhZTQzODI) channel!
 
 ## Tech stack
 **Flutter (Dart 2) and Redux**
