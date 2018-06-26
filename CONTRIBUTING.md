@@ -14,12 +14,13 @@ This project is about community, so your prescence and consideration mean a lot!
 **This is a baby project** 
 
 We don't have crazy contributing guidelines (yet). For now, follow this process:
-1. Create or select an issue. If you select one, choose one that's tagged `up for grabs`. If you create an issue, wait for a contributor to mark it with the `up for grabs` tag, or to respond with a comment.
+1. Create or select an issue. If you select one, choose one that's tagged `up for grabs` & try to be sure no one else has claimed it in the comments. If you create an issue, wait for a contributor to respond with a comment and mark it with the `up for grabs` tag.
 2. Once you've chosen the issue you'd like to work on, leave a comment that you'll be the one contributing so that others know it's being worked on.
-3. Write failing tests for the new feature/fix (if this is a new feature or if the existing tests are lacking). Test coverage is very important to ensure that we can make changes safely in the future. 
-4. Write the code! Try to follow the [Flutter style guidelines](https://github.com/flutter/flutter/wiki/Style-guide-for-Flutter-repo), the [Dart guidelines](https://www.dartlang.org/guides/language/effective-dart/style), and the general style of the repo itself. A contributor may request changes if the style is too inconsistent from these guidelines.
-5. Run the tests. Make sure you get that satisfying green pass for your new feature or fix.
-6. Create a pull request! Mention the related issue in the pull request (ex: "fixes #112"). 
-7. A contributor will review the pull request. They may request some changes, or may simply accept the PR. 
-8. Once your PR is accepted, you will be added to the AUTHORS file for your hard work!
-9. Thank you, you're awesome!
+3. Fork the project with the plan to make a pull request into the `development` branch once your code is complete.
+4. Write failing tests for the new feature/fix (if this is a new feature or the existing tests are just lacking). Test coverage is very important to ensure that we can make changes safely in the future. 
+5. Write the code! Try to follow the [Flutter style guidelines](https://github.com/flutter/flutter/wiki/Style-guide-for-Flutter-repo), the [Dart guidelines](https://www.dartlang.org/guides/language/effective-dart/style), and the general style of the repo itself. A contributor may request changes if the style is too inconsistent from these guidelines.
+6. Run the tests. Make sure you get that satisfying green pass for your new feature or fix.
+7. Create a pull request into the `development` branch! Mention the related issue in the pull request (ex: "fixes #112"). 
+8. A contributor will review the pull request. They may request some changes, or may simply accept the PR. 
+9. Once your PR is accepted, you will be added to the AUTHORS file for your hard work!
+10. Thank you, you're awesome!
