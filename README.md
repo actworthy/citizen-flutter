@@ -47,7 +47,7 @@ If there are better names and structures, feel free to mention them in an issue,
     - `reducers` - Redux Reducers. These take in changes to the state and produce a new app state from those changes
     - `redux-actions` - The Redux Actions that Reducers use to determine how to alter state
     - `ui` - User Interface classes
-        - `partials` - maller than screens and views, these widgets are reusable components. Ex: stylized `AppBar` or special checkboxes
+        - `partials` - Smaller than screens and views, these widgets are reusable components. Ex: stylized `AppBar` or special checkboxes
         - `screens` - Widgets that take up the entire phone viewport from top to bottom. Usually a `Scaffold` at top level
         - `views` - Widgets that take up _most_ of a screen. Typically inside of the `body` parameter of a `Scaffold`
 - `test` - Tests in here.
