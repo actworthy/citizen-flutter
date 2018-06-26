@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 /// tracks checked vs unchecked via [value] and Flutter's vanilla
 /// [StatefulWidget] (ie. -> no Redux)
 class LabeledCheckbox extends StatefulWidget {
-  String label;
-  bool value;
+  final String label;
+  final bool value;
 
   LabeledCheckbox({
     @required this.label,
@@ -14,19 +14,23 @@ class LabeledCheckbox extends StatefulWidget {
 
   @override
   State<LabeledCheckbox> createState() {
-    return LabeledCheckboxState();
+    return LabeledCheckboxState(this.value);
   }
 }
 
 class LabeledCheckboxState extends State<LabeledCheckbox> {
+  bool value;
+
+  LabeledCheckboxState(this.value);
+
   @override
   Row build(BuildContext context) {
     return Row(
       children: <Widget>[
         Checkbox(
-          value: widget.value,
+          value: this.value,
           onChanged: (value) {
-            setState(() => widget.value = value);
+            setState(() => this.value = value);
           },
         ),
         Text(widget.label),
