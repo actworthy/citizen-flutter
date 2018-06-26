@@ -1,5 +1,5 @@
 # Thank you for considering contributing!
-This project is about community, so your prescence and consideration mean a lot!
+This project is about community, so your presence and consideration mean a lot!
 
 ## Getting starting
 1. [Install Flutter](https://flutter.io/get-started/install/)!
