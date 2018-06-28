@@ -3,26 +3,30 @@ import 'package:actworthy_citizen/app_state.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:actworthy_citizen/models/action.dart';
 import 'package:actworthy_citizen/constants/material_design_icons.dart';
+import 'package:actworthy_citizen/ui/partials/filter_bar.dart';
 
 /// Act screen. Creates a list of [Card] representing actions a user will be able
 /// to filter in the future. Accesses the Redux store to list the actions.
 class ActView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.grey,
-      child: new Padding(
-        padding: const EdgeInsets.fromLTRB(0.0, 8.0, 0.0, 0.0),
-        child: StoreConnector<AppState, int>(
-          converter: (store) => store.state.actions.length,
-          builder: (context, length) => (length > 0)
-              ? ListView.builder(
-                  itemCount: length,
-                  itemBuilder: _buildCard,
-                )
-              : Center(child: CircularProgressIndicator()),
+    return Stack(
+      children: <Widget>[
+        Container(
+          padding: const EdgeInsets.fromLTRB(0.0, 45.0, 0.0, 8.0),
+          color: Colors.grey,
+          child: StoreConnector<AppState, int>(
+            converter: (store) => store.state.actions.length,
+            builder: (context, length) => (length > 0)
+                ? ListView.builder(
+                    itemCount: length,
+                    itemBuilder: _buildCard,
+                  )
+                : Center(child: CircularProgressIndicator()),
+          ),
         ),
-      ),
+        FilterBar(),
+      ],
     );
   }
 

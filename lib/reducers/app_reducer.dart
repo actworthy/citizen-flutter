@@ -1,4 +1,5 @@
 import 'package:actworthy_citizen/redux-actions/action_redux_actions.dart';
+import 'package:actworthy_citizen/redux-actions/filter_actions.dart';
 import 'package:actworthy_citizen/app_state.dart';
 
 /// Aggregates all reducers
@@ -9,6 +10,8 @@ AppState appReducers(AppState appState, dynamic reduxAction) {
     return _fetchActionsSucceeded(appState, reduxAction);
   else if (reduxAction is FetchActionsFailedReduxAction)
     return _fetchActionsFailed(appState, reduxAction);
+  else if (reduxAction is ShowFiltersAction)
+    return _showFilters(appState, reduxAction);
   return appState;
 }
 
@@ -38,5 +41,14 @@ AppState _fetchActionsFailed(
     actions: appState.actions,
     isLoading: false,
     error: reduxAction.error,
+  );
+}
+
+AppState _showFilters(AppState appState, ShowFiltersAction reduxAction) {
+  return AppState(
+    actions: appState.actions,
+    isLoading: appState.isLoading,
+    error: appState.error,
+    filterButtonSelected: reduxAction.filterButtonSelected,
   );
 }

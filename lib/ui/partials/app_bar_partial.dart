@@ -5,6 +5,7 @@ import 'package:actworthy_citizen/constants/material_design_icons.dart';
 /// title of 'ActWorthy', and sets up the login [IconButton].
 AppBar buildAppBar(BuildContext context, {String title}) {
   return AppBar(
+    elevation: 0.0,
     title: (title != null && title.isNotEmpty)
         ? Text(title)
         : Padding(
