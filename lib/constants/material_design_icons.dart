@@ -19,9 +19,6 @@
 ///
 import 'package:flutter/widgets.dart';
 
-const _kFontFam = 'ActWorthyIcons';
-const IconData person = const IconData(0xea5c, fontFamily: _kFontFam);
-
 /// The ActWorthyIcons.icon_name can be used to access an icon
 class ActWorthyIcons {
   ActWorthyIcons._();
