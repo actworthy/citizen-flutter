@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:actworthy_citizen/app_state.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:actworthy_citizen/models/action.dart';
-import 'package:actworthy_citizen/constants/material_design_icons.dart';
+import 'package:actworthy_citizen/ui/partials/action_card.dart';
+import 'package:actworthy_citizen/constants/actworthy_colors.dart';
 import 'package:actworthy_citizen/ui/partials/filter_bar.dart';
 
-/// Act screen. Creates a list of [Card] representing actions a user will be able
+/// Act screen. Creates a list of [ActionCard] representing actions a user will be able
 /// to filter in the future. Accesses the Redux store to list the actions.
 class ActView extends StatelessWidget {
   @override

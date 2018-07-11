@@ -58,34 +58,9 @@ class FilterBar extends StatelessWidget {
             ),
           ),
           // TODO: uncomment when ready to implement search
-          // _buildSearchButton(),
+          // Expanded(child: BorderedButton(label: "Search", icon: Icon(ActWorthyIcons.search), onPressed: () {},
+          // left: false, right: false,)),
         ],
-      ),
-    );
-  }
-
-  // NOTE: search is not included in the first release, so will not be included
-  // in the FilterBar
-  Widget _buildSearchButton() {
-    return Expanded(
-      child: Container(
-        height: filterBarHeight,
-        decoration: BoxDecoration(
-          border: Border(
-            top: greyBorder,
-            bottom: greyBorder,
-          ),
-        ),
-        child: FlatButton(
-          textColor: Colors.grey[600],
-          child: Row(
-            children: <Widget>[
-              Icon(ActWorthyIcons.search),
-              Text("Search"),
-            ],
-          ),
-          onPressed: () {},
-        ),
       ),
     );
   }
@@ -118,7 +93,7 @@ class _FilterDropDownButton extends StatelessWidget {
           store.state.filterButtonSelected == this.filterButtonName,
       builder: (context, bool expanded) {
         return Container(
-          height: filterBarHeight,
+          height: defaultButtonHeight,
           decoration: BoxDecoration(
             border: Border(
               top: _greyBorder,
