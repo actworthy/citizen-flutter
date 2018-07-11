@@ -16,6 +16,11 @@ class App extends StatelessWidget {
       title: 'ActWorthy',
       theme: ThemeData(
         primaryColor: Colors.white,
+        buttonTheme: ButtonThemeData(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(100.0),
+          ),
+        ),
       ),
       home: HomeScreen(),
       routes: <String, WidgetBuilder>{
