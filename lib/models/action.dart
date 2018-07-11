@@ -1,5 +1,6 @@
 import 'package:actworthy_citizen/models/organization.dart';
 import 'package:actworthy_citizen/models/issue.dart';
+import 'package:actworthy_citizen/models/post.dart';
 import 'package:flutter/foundation.dart';
 
 /// An [Action] is anything a user can do to affect their community.
@@ -15,6 +16,9 @@ class Action {
   final String type;
   final Organization organization;
 
+  // The list of posts associated with this Action
+  final List<Post> posts;
+
   /// All of the [Issue]s associated with this Action
   final List<Issue> issues;
 
@@ -28,6 +32,7 @@ class Action {
     @required this.organization,
     @required this.issues,
     @required this.expiresOn,
+    @required this.posts,
   });
 
   factory Action.fromJson(json) {
@@ -38,6 +43,7 @@ class Action {
       organization: Organization.fromJson(json["organization"]),
       issues: List.from(json["issues"].map((issue) => Issue(issue))),
       expiresOn: DateTime.parse(json["expires"]),
+      posts: [],
     );
   }
 }
