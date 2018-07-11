@@ -1,6 +1,7 @@
 import 'package:actworthy_citizen/app_state.dart';
 import 'package:actworthy_citizen/constants/material_design_icons.dart';
 import 'package:actworthy_citizen/constants/sizes.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
