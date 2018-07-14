@@ -12,6 +12,7 @@ class PostCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: 400.0,
       decoration: BoxDecoration(
         border: Border.all(color: ActWorthyColors.grey),
         color: Colors.white,
@@ -25,6 +26,7 @@ class PostCard extends StatelessWidget {
       ),
       // TODO: make data dynamic
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Container(
             margin: const EdgeInsets.all(12.0),
@@ -44,6 +46,7 @@ class PostCard extends StatelessWidget {
           Container(
             color: Colors.white,
             child: Row(
+              mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 Expanded(
                   child: BorderedButton(

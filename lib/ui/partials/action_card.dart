@@ -6,7 +6,6 @@ import 'package:actworthy_citizen/ui/partials/icon_with_label.dart';
 import 'package:actworthy_citizen/ui/partials/post_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:actworthy_citizen/constants/sizes.dart';
 
 /// Builds an action card that will house any [Post]s associated with the [Action]
 /// in a horizontal scroll view. Tapping on the see more button will take the user
@@ -25,6 +24,8 @@ class ActionCard extends StatefulWidget {
 }
 
 class ActionCardState extends State<ActionCard> {
+  int activePostIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, Action>(
@@ -35,24 +36,114 @@ class ActionCardState extends State<ActionCard> {
 
   /// Displays an action's data and builds a call to action using [_buildCallToAction]
   Widget _buildActionCard(BuildContext context, Action action) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4.0),
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 6.0),
-        color: ActWorthyColors.offWhite,
-        child: Column(
-          children: <Widget>[
-            _buildHeaderListTile(action),
-            _buildPostsScrollView(),
-            _buildPostScrollIndicators(),
-            _buildCallToAction(),
-          ],
-        ),
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 6.0),
+      margin: const EdgeInsets.symmetric(vertical: 4.0),
+      color: ActWorthyColors.offWhite,
+      child: Column(
+        children: <Widget>[
+          _HeaderListTile(action),
+          _buildPostsScrollView(),
+          _buildPostScrollIndicators(action.posts.length),
+          _CallToAction(),
+        ],
       ),
     );
   }
 
-  Widget _buildHeaderListTile(Action action) {
+  Widget _buildPostsScrollView() {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 5.0),
+      height: 420.0,
+      child: PageView.builder(
+        itemCount: 3,
+        physics: BouncingScrollPhysics(),
+        onPageChanged: (index) {
+          setState(() => activePostIndex = index);
+        },
+        itemBuilder: (BuildContext context, int index) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5.0),
+            child: PostCard(),
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _buildPostScrollIndicators(int postCount) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(10.0, 6.0, 10.0, 0.0),
+      child: Stack(
+        children: <Widget>[
+          Align(
+            alignment: Alignment.centerLeft,
+            child: _buildNumberOfPostsText(postCount),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: _buildActivePostIndicators(postCount),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildNumberOfPostsText(int postCount) {
+    String countText = "";
+
+    if (postCount == 1) countText = "1 post";
+    if (postCount > 1) countText = "$postCount posts";
+
+    return Text(countText, style: TextStyle(color: ActWorthyColors.darkGrey));
+  }
+
+  /// Creates the row directly below the horizontal Posts scroll view
+  /// If there are 6 or more posts, track which post is shown (active)
+  /// like this: "4/7" for example
+  /// If there are 5 posts or less, create dots representing each post
+  /// and color the dot matching the active post black, and the others
+  /// a light grey
+  List<Widget> _buildActivePostIndicators(int postCount) {
+    if (postCount > 5)
+      return [
+        Text(
+          "${activePostIndex + 1}/$postCount",
+          style: TextStyle(
+            color: ActWorthyColors.darkGrey,
+          ),
+        )
+      ];
+
+    List<Widget> dots = [];
+
+    for (int index = 0; index < postCount; index++) {
+      dots.add(
+        Container(
+          height: 7.0,
+          width: 7.0,
+          margin: const EdgeInsets.all(4.0),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: (index == activePostIndex)
+                ? ActWorthyColors.blackish
+                : ActWorthyColors.lightGrey,
+          ),
+        ),
+      );
+    }
+
+    return dots;
+  }
+}
+
+class _HeaderListTile extends StatelessWidget {
+  final Action action;
+
+  _HeaderListTile(this.action);
+
+  @override
+  Widget build(BuildContext context) {
     return ListTile(
       contentPadding: const EdgeInsets.only(left: 10.0),
       leading: CircleAvatar(
@@ -78,60 +169,9 @@ class ActionCardState extends State<ActionCard> {
       ),
     );
   }
+}
 
-  Widget _buildPostsScrollView() {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 5.0),
-      height: 423.0,
-      child: CustomScrollView(
-        physics: PageScrollPhysics(parent: BouncingScrollPhysics()),
-        scrollDirection: Axis.horizontal,
-        slivers: <Widget>[
-          SliverFixedExtentList(
-            itemExtent: postCardWidth,
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                  child: PostCard(),
-                );
-              },
-              childCount: 3,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildPostScrollIndicators() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10.0),
-      child: Stack(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(top: 6.0),
-            child: Row(
-              children: <Widget>[
-                Text(
-                  // TODO: make dynamic
-                  "3 posts",
-                  style: TextStyle(color: ActWorthyColors.darkGrey),
-                )
-              ],
-            ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              // TODO: add dot indicators
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-
+class _CallToAction extends StatelessWidget {
   /// Draws a call to action where the [FlattButton] labeled "Take Action" is aligned
   /// to the end of the action [Card], and the [IconButton]s (save, share, and create
   /// post) are aligned at the start of the card
@@ -140,7 +180,8 @@ class ActionCardState extends State<ActionCard> {
   /// button with open the proper app.
   ///
   /// See also [_buildActionCard], [ActView]
-  Widget _buildCallToAction() {
+  @override
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 0.0),
       child: Row(
