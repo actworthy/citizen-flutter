@@ -4,6 +4,7 @@ import 'package:actworthy_citizen/constants/material_design_icons.dart';
 import 'package:actworthy_citizen/models/action.dart';
 import 'package:actworthy_citizen/ui/partials/icon_with_label.dart';
 import 'package:actworthy_citizen/ui/partials/post_card.dart';
+import 'package:actworthy_citizen/ui/screens/action_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
@@ -165,7 +166,11 @@ class _HeaderListTile extends StatelessWidget {
           color: ActWorthyColors.lightGrey,
           size: 35.0,
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (context) => ActionDetailScreen(action)
+          ));
+        },
       ),
     );
   }
