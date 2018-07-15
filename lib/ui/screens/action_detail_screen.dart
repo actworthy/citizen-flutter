@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:actworthy_citizen/models/action.dart';
 import 'package:actworthy_citizen/constants/material_design_icons.dart';
+import 'package:actworthy_citizen/constants/actworthy_colors.dart';
 
 class ActionDetailScreen extends StatelessWidget {
   final Action action;
@@ -20,18 +21,12 @@ class ActionDetailScreen extends StatelessWidget {
     return AppBar(
       elevation: 0.0,
       backgroundColor: Color(0xFFF6F6F6),
-      title: Row(
-        children: <Widget>[
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(action.issues.map((issue) => "#${issue.name}").join(", "),
-                  style: TextStyle(color: Color(0xFFBCBCBC), fontSize: 14.0))
-              ],
-          ))
-        ],
+      title: Align(
+        alignment: Alignment.centerRight,
+        child: Text(
+          action.issues.map((issue) => "#${issue.name}").join(", "),
+          style: TextStyle(color: ActWorthyColors.grey, fontSize: 14.0),
+        ),
       ),
     );
   }
@@ -48,7 +43,7 @@ class ActionDetailScreen extends StatelessWidget {
   Widget _buildHeader() {
     return Container(
       padding: EdgeInsets.only(bottom: 10.0),
-      color: Color(0xFFF6F6F6),
+      color: ActWorthyColors.offWhite,
       child: ListTile(
         leading: CircleAvatar(
           child: Icon(
@@ -85,26 +80,30 @@ class ActionDetailScreen extends StatelessWidget {
           border:
               Border(top: BorderSide(color: Color(0xFFCBCBCB), width: 1.5))),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: FlatButton.icon(
-              icon: Icon(ActWorthyIcons.camera_alt),
-              label: Text("Add Post"),
-              color: Color(0xFFE4E4E4),
-              textColor: Colors.grey,
-              onPressed: () => {},
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: FlatButton.icon(
+                icon: Icon(ActWorthyIcons.camera_alt),
+                label: Text("Add Post"),
+                color: ActWorthyColors.lightGrey,
+                textColor: ActWorthyColors.darkGrey,
+                onPressed: () => {},
+              ),
             ),
           ),
-          Padding(
+          Expanded(
+            child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: FlatButton(
-                color: Color(0xFF28B496),
+                color: ActWorthyColors.primary,
                 child: Text("Take Action"),
                 textColor: Colors.white,
                 onPressed: () => {},
-              ))
+              ),
+            ),
+          )
         ],
       ),
     );
