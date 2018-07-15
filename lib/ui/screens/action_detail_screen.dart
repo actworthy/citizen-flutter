@@ -20,7 +20,7 @@ class ActionDetailScreen extends StatelessWidget {
   AppBar _buildAppBar() {
     return AppBar(
       elevation: 0.0,
-      backgroundColor: Color(0xFFF6F6F6),
+      backgroundColor: ActWorthyColors.offWhite,
       title: Align(
         alignment: Alignment.centerRight,
         child: Text(
@@ -77,8 +77,8 @@ class ActionDetailScreen extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(left: 15.0, right: 15.0),
       decoration: BoxDecoration(
-          border:
-              Border(top: BorderSide(color: Color(0xFFCBCBCB), width: 1.5))),
+          border: Border(
+              top: BorderSide(color: ActWorthyColors.lightGrey, width: 1.5))),
       child: Row(
         children: <Widget>[
           Expanded(
