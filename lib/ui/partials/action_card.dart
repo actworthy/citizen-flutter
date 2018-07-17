@@ -159,19 +159,17 @@ class _HeaderListTile extends StatelessWidget {
         style: TextStyle(fontWeight: FontWeight.bold),
       ),
       subtitle: Text(action.organization.name),
-      trailing: IconButton(
-        padding: const EdgeInsets.all(0.0),
-        icon: Icon(
-          ActWorthyIcons.chevron_right,
-          color: ActWorthyColors.lightGrey,
-          size: 35.0,
-        ),
-        onPressed: () {
-          Navigator.push(context, MaterialPageRoute(
-            builder: (context) => ActionDetailScreen(action)
-          ));
-        },
+      trailing: Icon(
+        ActWorthyIcons.chevron_right,
+        color: ActWorthyColors.lightGrey,
+        size: 35.0,
       ),
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ActionDetailScreen(action)),
+        );
+      },
     );
   }
 }
