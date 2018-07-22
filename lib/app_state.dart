@@ -1,5 +1,5 @@
-import 'package:actworthy_citizen/models/action.dart';
-import 'package:actworthy_citizen/redux-actions/filter_actions.dart';
+import 'models/action.dart';
+import 'redux-actions/filter_actions.dart';
 
 class AppState {
   List<Action> actions;

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:actworthy_citizen/models/action.dart';
-import 'package:actworthy_citizen/constants/material_design_icons.dart';
-import 'package:actworthy_citizen/constants/actworthy_colors.dart';
+
+import '../../models/action.dart';
+import '../../constants/material_design_icons.dart';
+import '../../constants/actworthy_colors.dart';
+import '../partials/action_header.dart';
+import 'add-post/add_post_screen.dart';
 
 class ActionDetailScreen extends StatelessWidget {
   final Action action;

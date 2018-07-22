@@ -1,12 +1,14 @@
-import 'package:actworthy_citizen/app_state.dart';
-import 'package:actworthy_citizen/constants/actworthy_colors.dart';
-import 'package:actworthy_citizen/constants/material_design_icons.dart';
-import 'package:actworthy_citizen/models/action.dart';
-import 'package:actworthy_citizen/ui/partials/icon_with_label.dart';
-import 'package:actworthy_citizen/ui/partials/post_card.dart';
-import 'package:actworthy_citizen/ui/screens/action_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+
+import '../screens/add-post/add_post_screen.dart';
+import 'action_header.dart';
+import '../../app_state.dart';
+import '../../constants/actworthy_colors.dart';
+import '../../constants/material_design_icons.dart';
+import '../../models/action.dart';
+import 'icon_with_label.dart';
+import 'post_card.dart';
 
 /// Builds an action card that will house any [Post]s associated with the [Action]
 /// in a horizontal scroll view. Tapping on the see more button will take the user
