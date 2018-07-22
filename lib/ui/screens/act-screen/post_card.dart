@@ -1,7 +1,8 @@
-import 'package:actworthy_citizen/constants/actworthy_colors.dart';
-import 'package:actworthy_citizen/constants/material_design_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:actworthy_citizen/ui/partials/bordered_button.dart';
+
+import '../../../constants/actworthy_colors.dart';
+import '../../../constants/material_design_icons.dart';
+import '../../partials/bordered_button.dart';
 
 /// A card representing a [Post]. Displayed inside of an [ActionCard].
 /// Tapping on the image inside of the [PostCard] will open the [PostDetail]

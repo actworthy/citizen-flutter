@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
-import '../screens/add-post/add_post_screen.dart';
-import 'action_header.dart';
-import '../../app_state.dart';
-import '../../constants/actworthy_colors.dart';
-import '../../constants/material_design_icons.dart';
-import '../../models/action.dart';
-import 'icon_with_label.dart';
+import '../../partials/action_header.dart';
+import '../../../app_state.dart';
+import '../../../constants/actworthy_colors.dart';
+import '../../../models/action.dart';
+import 'call_to_action.dart';
 import 'post_card.dart';
 
 /// Builds an action card that will house any [Post]s associated with the [Action]
@@ -50,7 +48,7 @@ class ActionCardState extends State<ActionCard> {
           ActionHeader(action, clickable: true),
           _buildPostsScrollView(),
           _buildScrollIndicators(action.posts.length),
-          _CallToAction(action),
+          CallToAction(action),
         ],
       ),
     );
@@ -144,60 +142,6 @@ class ActionCardState extends State<ActionCard> {
             ),
           ),
         ),
-    );
-  }
-}
-
-/// Draws a call to action where the [FlattButton] labeled "Take Action" is aligned
-/// to the end of the action [Card], and the [IconButton]s (save, share, and create
-/// post) are aligned at the start of the card
-///
-/// When the action's type is something like 'email' or 'call', the Take Action
-/// button with open the proper app.
-///
-/// See also [_buildActionCard], [ActView]
-class _CallToAction extends StatelessWidget {
-  final Action _action;
-
-  _CallToAction(this._action);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 0.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: FlatButton(
-                color: ActWorthyColors.lightGrey,
-                child: IconWithLabel(
-                  icon: Icon(
-                    ActWorthyIcons.camera_alt,
-                    color: ActWorthyColors.darkGrey,
-                  ),
-                  label: "Add Post",
-                ),
-                onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => AddPostScreen(_action))),
-              ),
-            ),
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: FlatButton(
-                color: ActWorthyColors.primary,
-                child: Text("Take Action"),
-                textColor: Colors.white,
-                onPressed: () {},
-              ),
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

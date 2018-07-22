@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:actworthy_citizen/ui/screens/home_screen.dart';
-import 'package:actworthy_citizen/ui/screens/login_screen.dart';
-import 'package:actworthy_citizen/ui/screens/sign_up_screen.dart';
-import 'package:actworthy_citizen/ui/screens/settings_screen.dart';
+
+import 'ui/screens/login_screen.dart';
+import 'ui/screens/sign_up_screen.dart';
+import 'ui/screens/settings_screen.dart';
+import 'ui/screens/act-screen/act_screen.dart';
 
 /// Creates a [MaterialApp] with a title, theme, home which is set to [HomeScreen],
 /// and named routes for the [Navigator] to use.
@@ -22,9 +23,9 @@ class App extends StatelessWidget {
           ),
         ),
       ),
-      home: HomeScreen(),
+      home: ActScreen(),
       routes: <String, WidgetBuilder>{
-        '/home': (BuildContext context) => HomeScreen(),
+        '/act': (BuildContext context) => ActScreen(),
         '/settings': (BuildContext context) => SettingsScreen(),
         '/login': (BuildContext context) => LoginScreen(),
         '/signup': (BuildContext context) => SignUpScreen(),
