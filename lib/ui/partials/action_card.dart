@@ -27,6 +27,8 @@ class ActionCard extends StatefulWidget {
 }
 
 class ActionCardState extends State<ActionCard> {
+  /// Tracks the [PostCard] that is currently being displayed inside of the
+  /// [ActionCard]'s horizontal scroll view.
   int activePostIndex = 0;
 
   @override
@@ -45,10 +47,10 @@ class ActionCardState extends State<ActionCard> {
       color: ActWorthyColors.offWhite,
       child: Column(
         children: <Widget>[
-          _HeaderListTile(action),
+          ActionHeader(action, clickable: true),
           _buildPostsScrollView(),
-          _buildPostScrollIndicators(action.posts.length),
-          _CallToAction(),
+          _buildScrollIndicators(action.posts.length),
+          _CallToAction(action),
         ],
       ),
     );
@@ -74,7 +76,7 @@ class ActionCardState extends State<ActionCard> {
     );
   }
 
-  Widget _buildPostScrollIndicators(int postCount) {
+  Widget _buildScrollIndicators(int postCount) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(10.0, 6.0, 10.0, 0.0),
       child: Stack(
@@ -83,20 +85,17 @@ class ActionCardState extends State<ActionCard> {
             alignment: Alignment.centerLeft,
             child: _buildNumberOfPostsText(postCount),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: _buildActivePostIndicators(postCount),
-          ),
+          _buildActivePostIndicators(postCount),
         ],
       ),
     );
   }
 
   Widget _buildNumberOfPostsText(int postCount) {
-    String countText = "";
+    String countText = '';
 
-    if (postCount == 1) countText = "1 post";
-    if (postCount > 1) countText = "$postCount posts";
+    if (postCount == 1) countText = '1 post';
+    if (postCount > 1) countText = '$postCount posts';
 
     return Text(countText, style: TextStyle(color: ActWorthyColors.darkGrey));
   }
@@ -106,85 +105,62 @@ class ActionCardState extends State<ActionCard> {
   /// like this: "4/7" for example
   /// If there are 5 posts or less, create dots representing each post
   /// and color the dot matching the active post black, and the others
-  /// a light grey
-  List<Widget> _buildActivePostIndicators(int postCount) {
-    if (postCount > 5)
-      return [
-        Text(
-          "${activePostIndex + 1}/$postCount",
-          style: TextStyle(
-            color: ActWorthyColors.darkGrey,
-          ),
-        )
-      ];
-
-    List<Widget> dots = [];
-
-    for (int index = 0; index < postCount; index++) {
-      dots.add(
-        Container(
-          height: 7.0,
-          width: 7.0,
-          margin: const EdgeInsets.all(4.0),
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: (index == activePostIndex)
-                ? ActWorthyColors.blackish
-                : ActWorthyColors.lightGrey,
-          ),
-        ),
-      );
-    }
-
-    return dots;
+  /// a light grey.
+  Row _buildActivePostIndicators(int postCount) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: (postCount < 6)
+          ? _buildDots(postCount)
+          : [
+              Text(
+                "${activePostIndex + 1}/$postCount",
+                style: TextStyle(color: ActWorthyColors.darkGrey),
+              )
+            ],
+    );
   }
-}
 
-class _HeaderListTile extends StatelessWidget {
-  final Action action;
+  /// Recursively build the scroll indicator dots.
+  List<Widget> _buildDots(int postCount,
+      {int index = 0, List<Widget> dots = const []}) {
+    assert(postCount >= 0);
 
-  _HeaderListTile(this.action);
+    if (index == postCount) return dots;
 
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      contentPadding: const EdgeInsets.only(left: 10.0),
-      leading: CircleAvatar(
-        child: Icon(
-          ActWorthyIcons.card_giftcard,
-          color: Colors.grey[800],
+    return _buildDots(
+      postCount,
+      index: index + 1,
+      dots: List.from(dots)
+        ..add(
+          Container(
+            height: 7.0,
+            width: 7.0,
+            margin: const EdgeInsets.all(4.0),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: (index == activePostIndex)
+                  ? ActWorthyColors.blackish
+                  : ActWorthyColors.lightGrey,
+            ),
+          ),
         ),
-        backgroundColor: ActWorthyColors.sunshine,
-      ),
-      title: Text(
-        action.title,
-        style: TextStyle(fontWeight: FontWeight.bold),
-      ),
-      subtitle: Text(action.organization.name),
-      trailing: Icon(
-        ActWorthyIcons.chevron_right,
-        color: ActWorthyColors.lightGrey,
-        size: 35.0,
-      ),
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => ActionDetailScreen(action)),
-        );
-      },
     );
   }
 }
 
+/// Draws a call to action where the [FlattButton] labeled "Take Action" is aligned
+/// to the end of the action [Card], and the [IconButton]s (save, share, and create
+/// post) are aligned at the start of the card
+///
+/// When the action's type is something like 'email' or 'call', the Take Action
+/// button with open the proper app.
+///
+/// See also [_buildActionCard], [ActView]
 class _CallToAction extends StatelessWidget {
-  /// Draws a call to action where the [FlattButton] labeled "Take Action" is aligned
-  /// to the end of the action [Card], and the [IconButton]s (save, share, and create
-  /// post) are aligned at the start of the card
-  ///
-  /// When the action's type is something like 'email' or 'call', the Take Action
-  /// button with open the proper app.
-  ///
-  /// See also [_buildActionCard], [ActView]
+  final Action _action;
+
+  _CallToAction(this._action);
+
   @override
   Widget build(BuildContext context) {
     return Padding(
