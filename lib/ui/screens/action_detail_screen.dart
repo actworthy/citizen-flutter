@@ -16,7 +16,7 @@ class ActionDetailScreen extends StatelessWidget {
     return Scaffold(
       appBar: _buildAppBar(),
       body: _buildBody(),
-      bottomNavigationBar: _buildBottomBar(),
+      bottomNavigationBar: _buildBottomBar(context),
     );
   }
 
@@ -76,7 +76,7 @@ class ActionDetailScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildBottomBar() {
+  Widget _buildBottomBar(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(left: 15.0, right: 15.0),
       decoration: BoxDecoration(
@@ -92,7 +92,8 @@ class ActionDetailScreen extends StatelessWidget {
                 label: Text("Add Post"),
                 color: ActWorthyColors.lightGrey,
                 textColor: ActWorthyColors.darkGrey,
-                onPressed: () => {},
+                onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => AddPostScreen(action))),
               ),
             ),
           ),

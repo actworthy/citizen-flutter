@@ -180,7 +180,8 @@ class _CallToAction extends StatelessWidget {
                   ),
                   label: "Add Post",
                 ),
-                onPressed: () => {},
+                onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => AddPostScreen(_action))),
               ),
             ),
           ),
