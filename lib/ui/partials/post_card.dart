@@ -46,7 +46,6 @@ class PostCard extends StatelessWidget {
           Container(
             color: Colors.white,
             child: Row(
-              mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 Expanded(
                   child: BorderedButton(
