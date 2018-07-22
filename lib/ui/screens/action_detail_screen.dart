@@ -47,21 +47,7 @@ class ActionDetailScreen extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(bottom: 10.0),
       color: ActWorthyColors.offWhite,
-      child: ListTile(
-        leading: CircleAvatar(
-          child: Icon(
-            ActWorthyIcons.card_giftcard,
-            color: Colors.grey[800],
-          ),
-          backgroundColor: Colors.yellow[400],
-        ),
-        title: Text(
-          action.title,
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-        subtitle:
-            Text(action.organization.name, overflow: TextOverflow.ellipsis),
-      ),
+      child: ActionHeader(action),
     );
   }
 
