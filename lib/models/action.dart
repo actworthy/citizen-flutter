@@ -25,6 +25,9 @@ class Action {
   /// After this date, the Action should no longer be displayed
   final DateTime expiresOn;
 
+  /// A unique, human-readable identifier used for the action's url
+  final String slug;
+
   Action({
     @required this.title,
     @required this.summary,
@@ -33,6 +36,7 @@ class Action {
     @required this.issues,
     @required this.expiresOn,
     @required this.posts,
+    @required this.slug,
   });
 
   factory Action.fromJson(json) {
@@ -44,6 +48,7 @@ class Action {
       issues: List.from(json["issues"].map((issue) => Issue(issue))),
       expiresOn: DateTime.parse(json["expires"]),
       posts: [],
+      slug: json["slug"],
     );
   }
 }

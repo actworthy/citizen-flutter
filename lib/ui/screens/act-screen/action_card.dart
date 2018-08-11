@@ -47,7 +47,7 @@ class ActionCardState extends State<ActionCard> {
       child: Column(
         children: <Widget>[
           ActionHeader(action, clickable: true),
-          _buildPostsScrollView(),
+          _buildPostsScrollView(action),
           _buildScrollIndicators(action.posts.length),
           CallToAction(action),
         ],
@@ -55,7 +55,7 @@ class ActionCardState extends State<ActionCard> {
     );
   }
 
-  Widget _buildPostsScrollView() {
+  Widget _buildPostsScrollView(Action action) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 5.0),
       height: 420.0,
@@ -68,7 +68,7 @@ class ActionCardState extends State<ActionCard> {
         itemBuilder: (BuildContext context, int index) {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5.0),
-            child: PostCard(),
+            child: PostCard(action),
           );
         },
       ),

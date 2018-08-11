@@ -1,17 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:share/share.dart';
 
 import '../../constants/actworthy_colors.dart';
 import '../../constants/material_design_icons.dart';
 import '../partials/scroll_indicator_partial.dart';
+import '../../models/action.dart';
+import '../../utils.dart';
 
 /// A screen detailing the list of [Post]s from a single [Action].
 class PostsDetailScreen extends StatefulWidget {
+  final Action _action;
+
+  PostsDetailScreen(this._action);
+
   @override
-  State<StatefulWidget> createState() => PostsDetailScreenState();
+  State<StatefulWidget> createState() => PostsDetailScreenState(_action);
 }
 
 class PostsDetailScreenState extends State<PostsDetailScreen> {
-  int activePostIndex = 0;
+  /// The [Action] from which these posts originate
+  final Action _action;
+
+  int _activePostIndex = 0;
+
+  PostsDetailScreenState(this._action);
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +52,7 @@ class PostsDetailScreenState extends State<PostsDetailScreen> {
       itemBuilder: (context, index) => _buildPage(),
       itemCount: 3,
       onPageChanged: (index) {
-        setState(() => activePostIndex = index);
+        setState(() => _activePostIndex = index);
       },
     );
   }
@@ -74,10 +86,11 @@ class PostsDetailScreenState extends State<PostsDetailScreen> {
       ),
       child: Row(
         children: <Widget>[
-          Expanded(child: ScrollPositionIndicator(3, activePostIndex)),
+          Expanded(child: ScrollPositionIndicator(3, _activePostIndex)),
           FlatButton.icon(
             label: Text("Share", style: greyText),
-            onPressed: () {},
+            // TODO: replace with post url
+            onPressed: () => Share.share(singleActionUrl(_action.slug)),
             icon: Icon(
               ActWorthyIcons.share,
               color: ActWorthyColors.darkGrey,

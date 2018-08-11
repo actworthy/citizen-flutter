@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:share/share.dart';
 
 import '../../../constants/actworthy_colors.dart';
 import '../../../constants/material_design_icons.dart';
 import '../../partials/bordered_button.dart';
 import '../posts_detail_screen.dart';
+import '../../../models/action.dart';
+import '../../../utils.dart';
 
 /// A card representing a [Post]. Displayed inside of an [ActionCard].
 /// Tapping on the image inside of the [PostCard] will open the [PostDetail]
@@ -11,12 +14,16 @@ import '../posts_detail_screen.dart';
 ///
 /// See also [ActionCard].
 class PostCard extends StatelessWidget {
+  final Action _action;
+
+  PostCard(this._action);
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => Navigator
           .of(context)
-          .push(MaterialPageRoute(builder: (c) => PostsDetailScreen())),
+          .push(MaterialPageRoute(builder: (c) => PostsDetailScreen(_action))),
       child: Container(
         width: 400.0,
         decoration: BoxDecoration(
@@ -56,7 +63,9 @@ class PostCard extends StatelessWidget {
                       bottom: false,
                       left: false,
                       icon: Icon(ActWorthyIcons.share),
-                      onPressed: () {},
+                      // TODO: replace with post url
+                      onPressed: () =>
+                          Share.share(singleActionUrl(_action.slug)),
                     ),
                   ),
                   Expanded(
