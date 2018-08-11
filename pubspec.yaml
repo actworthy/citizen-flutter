@@ -17,6 +17,9 @@ dependencies:
   
   http: "^0.11.3+16"
 
+  # social sharing
+  share: ^0.5.2
+
   # images
   image_picker: "^0.4.5"
 
