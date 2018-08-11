@@ -1,15 +1,14 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:actworthy_citizen/constants/urls.dart';
 import 'package:http/http.dart' as http;
 import 'package:actworthy_citizen/models/action.dart';
-
-const BASE_URL = "https://api.actworthy.org/v1";
 
 // Used only as the first action loading call
 Future<List<Action>> fetchActions() async {
   return await http
       .get(
-        "$BASE_URL/actions",
+        "$apiUrl/actions",
         headers: {"Accept": "application/json"},
       )
       .then((response) => response.body)
